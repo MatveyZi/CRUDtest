@@ -1,0 +1,64 @@
+﻿<Window x:Class="MainProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:as="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:local="clr-namespace:MainProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="740" Width="1280" WindowStartupLocation="CenterScreen" 
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None" Loaded="Window_Loaded">
+    <Grid>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        
+        <!--Top Border-->
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Background="DarkGray" CornerRadius="12 12 0 0" MouseDown="Border_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0 10 0">
+                <Button Background="Transparent" BorderThickness="0" Width="30" Height="30" x:Name="Close" Click="Close_Click" Cursor="Hand">
+                    <as:IconImage Icon="WindowClose"/>
+                </Button>
+            </StackPanel>
+        </Border>
+        
+        <!--Left Border-->
+        <Border Grid.Row="1" Grid.Column="0" Background="White" CornerRadius="0 0 0 12">
+            <StackPanel>
+                <Grid Height="200">
+                    
+                </Grid>
+
+                <Separator Height="2" Margin="20 10 20 10" Background="#ced0d5"/>
+                <Button x:Name="Home" Style="{StaticResource MenuButton}" Click="MainWindow_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <as:IconImage Icon="ClipboardList" Width="50" VerticalAlignment="Center"/>
+                        <TextBlock Background="Transparent" Text="Люди" VerticalAlignment="Center" Margin="15 0 0 0" Width="100"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="Notes" Style="{StaticResource MenuButton}" Click="Notes_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <as:IconImage Icon="PencilAlt" Width="50" VerticalAlignment="Center"/>
+                        <TextBlock Background="Transparent" Text="Задания" VerticalAlignment="Center" Margin="15 0 0 0" Width="100"/>
+                    </StackPanel>
+                </Button>
+
+                <Separator Height="2" Margin="20 20 20 10" Background="#ced0d5"/>
+            </StackPanel>
+        </Border>
+        
+        <!--Right Border-->
+        <Border Grid.Row="1" Grid.Column="1" Background="White" CornerRadius="0 0 12 0" >
+            <Frame x:Name="WindowLocation" NavigationUIVisibility="Hidden"/>
+        </Border>
+    </Grid>
+</Window>

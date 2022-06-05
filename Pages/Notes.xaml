@@ -1,0 +1,38 @@
+﻿<Page x:Class="MainProject.Pages.Notes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MainProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1030"
+      Title="Notes">
+
+    <Border Background="White" CornerRadius="0 0 12 0">
+        <Grid>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Margin="10" Background="#ced0d5" CornerRadius="50" Padding="20">
+                <Grid>
+                    <DataGrid Background="#ced0d5" BorderThickness="0" AutoGenerateColumns="False" x:Name="dgTodoList" 
+                              CanUserResizeRows="False" CanUserResizeColumns="False" FontSize="16" ItemsSource="{Binding}" 
+                              CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="280" Header="Работник" Binding="{Binding NamePlusJob}" IsReadOnly="True"/>
+                            <DataGridCheckBoxColumn Header="Выполнено" Width="100" Binding="{Binding isDone, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False"/>
+                            <DataGridTextColumn Width="*" Header="Задача" Binding="{Binding Text}" IsReadOnly="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Border>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Style="{StaticResource MenuButton}" Content="Добавить" Click="Add_Click"/>
+                <Button Style="{StaticResource MenuButton}" Content="Удалить" Click="Delete_Click" />
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Page>

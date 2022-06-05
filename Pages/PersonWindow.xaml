@@ -1,0 +1,74 @@
+﻿<Window x:Class="MainProject.Pages.PersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MainProject.Pages"
+        mc:Ignorable="d"
+        Title="PersonWindow" Height="400" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="5 10 5 5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5 0 5 0"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Height" Value="30"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.08*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="DarkGray" CornerRadius="12 12 0 0" MouseDown="Border_MouseDown" Grid.Row="0"/>
+
+        <Border CornerRadius="0 0 12 12" Padding="15" Background="#ffffff" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.15*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <TextBlock Text="Имя: " />
+                    <TextBox  Text="{Binding Name}"/>
+
+                    <TextBlock Text="Возраст: "/>
+                    <TextBox Text="{Binding Age}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="Фамилия"/>
+                    <TextBox Text="{Binding SurName}" />
+                    <TextBlock Text="Телефон: "/>
+                    <TextBox Text="{Binding Phonenumber}"/>
+                    <TextBlock Text="Деятельность"/>
+                    <ComboBox Margin="5 0 5 0" Height="30" FontSize="16" Text="{Binding Position}">
+                        <ComboBoxItem Content="Менеджер"/>
+                        <ComboBoxItem Content="Директор"/>
+                        <ComboBoxItem Content="Разработчик EXEL таблиц"/>
+                        <ComboBoxItem Content="Пиар менеджер"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <Button Grid.Row="1" Grid.Column="0" Content="OK" x:Name="Accept_Button" Click="Accept_Button_Click" IsDefault="True"/>
+                
+                <Button Grid.Row="1" Grid.Column="1" Content="Cancel" x:Name="Cancel_Button" IsCancel="True"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
